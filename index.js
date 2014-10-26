@@ -2,6 +2,8 @@ var util = require("util");
 var Writable = require('stream').Writable;
 var winston = require("winston");
 
+module.exports = SplitStream;
+
 util.inherits(SplitStream, Writable);
 function SplitStream(marker, streamFactory, options) {
 	Writable.call(this, options);
