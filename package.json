@@ -1,6 +1,6 @@
 {
   "name": "node-splitstream",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A NodeJS stream that splits input into a number of streams at given markers.",
   "main": "index.js",
   "scripts": {
