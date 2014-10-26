@@ -1,0 +1,22 @@
+{
+  "name": "node-chunkstream",
+  "version": "0.0.1",
+  "description": "A NodeJS stream that splits input into a number of streams at given markers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaa/node-chunkstream.git"
+  },
+  "author": "Joakim Beijar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaa/node-chunkstream/issues"
+  },
+  "homepage": "https://github.com/kaa/node-chunkstream",
+  "dependencies": {
+    "winston": "~0.8.1"
+  }
+}
