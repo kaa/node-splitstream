@@ -1,6 +1,6 @@
 var util = require("util");
 var Writable = require('stream').Writable;
-var winston = require("winston");
+var logger = require("winston").loggers.get("kaa/splitstream");
 
 module.exports = SplitStream;
 
@@ -20,17 +20,17 @@ SplitStream.prototype._pushToStream = function(chunk) {
 	if(!this.stream)	
 		this.stream = this.streamFactory();
 	this.stream.write(chunk);
-	winston.debug("pushed %d bytes", chunk.length);
+	logger.debug("pushed %d bytes", chunk.length);
 }
 SplitStream.prototype._endStream = function() {
 	if(this.stream) {
 		this.stream.end();
-		winston.debug("ended stream");
+		logger.debug("ended stream");
 	}
 	this.stream = null;
 }
 SplitStream.prototype._write = function(chunk, _, callback) {
-	winston.debug("got %d byte chunk", chunk.length);
+	logger.debug("got %d byte chunk", chunk.length);
 	var p = 0; var last = 0;
 	while(p<chunk.length) {
 		if(chunk[p]===this.marker[this.matched]) {
@@ -39,7 +39,7 @@ SplitStream.prototype._write = function(chunk, _, callback) {
 			this.matched = 0;
 		}
 		if(this.matched===this.marker.length) {
-			winston.debug("found marker at %d", this.position);
+			logger.debug("found marker at %d", this.position);
 			var end = this.position-(this.matched);
 			this._pushToStream(chunk.slice(last, end));
 			this._endStream();
